@@ -57,7 +57,7 @@ In addition to the typical event properties, Conferences also have a list of Spe
   - `presentationDuration`: the duration of the presentation.
 
 3. Create a simple **Use Case Diagram** illustrating how a user (e.g., admin, member, or guest) interacts with **either** the Association of Nurses or the Event Management application. Identify the main **actors** and the **use cases** (e.g., update membership, schedule an event, invite guests).
-
+![img.png](USECASE.png) ASSOCIATION OF NURSES USE CASE EXAMPLE
 4. Create a **UML Class Diagram** for one (or both) of the domains above:
 
    - **Association of Nurses**: Show how `Chapter` and `Member` relate.
