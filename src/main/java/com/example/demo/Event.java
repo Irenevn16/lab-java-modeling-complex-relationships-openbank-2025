@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -13,10 +14,13 @@ public abstract class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
     private int duration;
     private String location;
     private String title;
+
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<Guest> guestList;
 
     public Event() {

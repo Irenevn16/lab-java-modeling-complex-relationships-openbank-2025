@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Guest {
@@ -15,12 +12,17 @@ public class Guest {
     private String name;
     private Status status;
 
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
+
     public Guest() {
     }
 
-    public Guest(String name, Status status) {
+    public Guest(String name, Status status, Event event) {
         this.name = name;
         this.status = status;
+        this.event = event;
     }
 
     public String getName() {
@@ -39,12 +41,21 @@ public class Guest {
         this.status = status;
     }
 
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
     @Override
     public String toString() {
         return "Guest{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", status=" + status +
+                ", event=" + event +
                 '}';
     }
 }

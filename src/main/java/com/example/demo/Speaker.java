@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Speaker {
@@ -15,12 +12,17 @@ public class Speaker {
     private String name;
     private int presentationDuration;
 
+    @ManyToOne
+    @JoinColumn(name = "conference_id")
+    private Conference conference;
+
     public Speaker() {
     }
 
-    public Speaker(String name, int presentationDuration) {
+    public Speaker(String name, int presentationDuration, Conference conference) {
         this.name = name;
         this.presentationDuration = presentationDuration;
+        this.conference = conference;
     }
 
     public String getName() {
@@ -39,12 +41,21 @@ public class Speaker {
         this.presentationDuration = presentationDuration;
     }
 
+    public Conference getConference() {
+        return conference;
+    }
+
+    public void setConference(Conference conference) {
+        this.conference = conference;
+    }
+
     @Override
     public String toString() {
         return "Speaker{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", presentationDuration=" + presentationDuration +
+                ", conference=" + conference +
                 '}';
     }
 }
